@@ -27,7 +27,36 @@ class NameFormatter {
   }
   
   func inverted() -> String {
-    return "🤷‍♀️"
+    
+    var nameStrings = self.name.trimmingCharacters(in: .whitespaces).components(separatedBy: " ")
+    let honorifics = ["Dr.", "Mr.","Mrs","Ms"]
+    var invertedName = ""
+    
+    if nameStrings.count == 0 {
+      return invertedName
+    }
+    
+    if honorifics.contains(nameStrings[0]) {
+      
+      if nameStrings.count == 1 {
+        return invertedName
+      } else if nameStrings.count == 2 {
+        invertedName = nameStrings[0] + " " + nameStrings[1]
+      } else if nameStrings.count == 3 {
+        invertedName = nameStrings[0] + " " + nameStrings[2] + ", " + nameStrings[1]
+      }
+      
+    } else {
+      if nameStrings.count == 1 {
+        invertedName = nameStrings[0]
+      } else if nameStrings.count == 2 {
+        invertedName = nameStrings[1] + ", " + nameStrings[0]
+      }
+    }
+    
+    
+    
+    return invertedName
   }
   
 }
